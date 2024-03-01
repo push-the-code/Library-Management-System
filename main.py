@@ -1,4 +1,5 @@
 '''
+
 book = {
     1 : {
         "Title" : "The Intelligent Investor",
@@ -11,8 +12,15 @@ book = {
         "Author" : "Brian W. Kernighan and Dennis M. Ritchie",
         "ISBN" : "CPL-676BKDRCPL",
         "Publisher" : "Prentice Hall"
+    },
+    3 : {
+        "Title" : "Rich Dad Poor Dad",
+        "Author" : "Robert T. Kiyosaki",
+        "ISBN" : "RDPD-2141RDPD",
+        "Publisher" : "Plata Publishing"
     }
 }
+
 '''
 
 book = {}
@@ -35,7 +43,7 @@ def display_book():
     else:
         print("\n")
         for key, value in book.items():
-            print(key, end=" :")
+            print("\n",key, end=" :")
             for k, v in value.items():
                 print(" ' %s : %s '"%(k, v), end="\n   ")
             
@@ -56,8 +64,11 @@ def delete_book():
     else:
         print("\n")
         delete_id = int(input("Enter book id to delete: "))
-        del (book[delete_id])
-        print("\nBook has been deleted!")
+        if delete_id not in book:
+            print("\nNo book with this ID to delete!")
+        else:
+            del (book[delete_id])
+            print("\nBook has been deleted!")
     
 def clear_all():
     if len(book) == 0:
@@ -75,7 +86,7 @@ def main():
         print("\t\t  2. Search a book")
         print("\t\t  3. Display all books")
         print("\t\t  4. Delete a specific book")
-        print("\t\t  5. clear all book list")
+        print("\t\t  5. Clear all book list")
         print("\t\t  0. Exit\n")
         print("\t￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣\n")
         
